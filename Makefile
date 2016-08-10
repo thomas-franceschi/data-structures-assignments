@@ -2,7 +2,7 @@ MEASURE=	common/measure
 
 all:
 
-$(MEASURE):	common/measure.c
+$(MEASURE):	$(MEASURE).c
 	@make -s -C common
 
 test:		$(MEASURE)
