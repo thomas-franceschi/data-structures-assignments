@@ -1,0 +1,7 @@
+before_script:
+  - apt-get update -y
+  - apt-get install -y g++ valgrind
+
+test:
+  script:
+    - make test
