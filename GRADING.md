@@ -1,5 +1,5 @@
-Challenge 01 - Grading
-======================
+Challenge - Grading
+===================
 
 Build
 -----
