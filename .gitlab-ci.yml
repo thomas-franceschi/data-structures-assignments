@@ -1,7 +1,4 @@
-before_script:
-  - apt-get update -y
-  - apt-get install -y g++ valgrind
-
+image: pbui/cse-30331-fa16:1
 test:
   script:
     - make test
