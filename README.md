@@ -3,6 +3,6 @@ Assignments
 
 This contains the individual reading and challenge assignments for:
 
-- **Name**:
+- **Name**: Thomas Franceschi
 
-- **NetID**:
+- **NetID**: tfrances
