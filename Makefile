@@ -1,5 +1,4 @@
 MEASURE=	common/measure
-BRANCH=		$(shell git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 
 all:
 
@@ -7,6 +6,5 @@ $(MEASURE):	$(MEASURE).c
 	@make -s -C common
 
 test:		$(MEASURE)
-	@[ "$(BRANCH)" = "master" ] \
-	    || (echo "$(BRANCH)" | grep -q reading) \
-	    || { [ -f "$(BRANCH)/solution.cpp" ] && (echo "Testing $(BRANCH)" && cd $(BRANCH) && make -s test) }
+	@[ -f challenge01/solution.cpp ] && (echo "Testing challenge01"; cd challenge01; make -s test)
+	@[ -f challenge02/solution.cpp ] && (echo "Testing challenge02"; cd challenge02; make -s test)
