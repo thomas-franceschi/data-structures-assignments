@@ -22,10 +22,10 @@ int main(int argc, char *argv[]) {
     //Vector to be rotated
     vector<int> myVector;
 
-    cout << "Size of Vector - Shift # - Direction (L/R)" << endl;;
+    //cout << "Size of Vector - Shift # - Direction (L/R)" << endl;;
     cin >> size >> shift >> dir;
 
-    cout << "size: " << size << endl << "shift: " << shift << endl << "Direction: " << dir << endl;
+    //cout << "size: " << size << endl << "shift: " << shift << endl << "Direction: " << dir << endl;
 
     for ( int i = 0; i < size; i++) {
         cin >> vecValue;
@@ -35,8 +35,8 @@ int main(int argc, char *argv[]) {
 //Left Rotate
 if ( dir == 'L' || dir == 'l') {
         //Print original order
-        for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
-        cout << endl;
+        //for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
+        //cout << endl;
 
     for (int k = 0; k < shift; k++) {
             //Rotate vector once
@@ -44,8 +44,7 @@ if ( dir == 'L' || dir == 'l') {
 
                 swap( myVector[j], myVector[j+1] );
 
-                for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
-                cout << endl;
+                
             }
         }
     }
@@ -53,8 +52,8 @@ if ( dir == 'L' || dir == 'l') {
     //Right Rotate
 if ( dir == 'R' || dir == 'r') {
         //Print original order
-        for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
-        cout << endl;
+        //for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
+        //cout << endl;
 
     for (int k = 0; k < shift; k++) {
             //Rotate vector once
@@ -62,10 +61,12 @@ if ( dir == 'R' || dir == 'r') {
 
                 swap( myVector[j], myVector[j-1] );
 
-                for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
-                cout << endl;
+                //for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
+                //cout << endl;
             }
         }
     }
+    for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
+                cout << endl;
 
 }
