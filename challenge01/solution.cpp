@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     //Vector to be rotated
     vector<int> myVector;
 
-    while(1) {
+    for (int test = 0; test < 12; test++) {
 
         //cout << "Size of Vector - Shift # - Direction (L/R)" << endl;;
         cin >> size >> shift >> dir;
