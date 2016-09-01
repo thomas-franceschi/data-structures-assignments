@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     char dir;
     //Vector to be rotated
     vector<int> myVector;
-
+    for ( int test = 0; test < 12; test++){
         //cout << "Size of Vector - Shift # - Direction (L/R)" << endl;;
         cin >> size >> shift >> dir;
 
@@ -59,11 +59,14 @@ int main(int argc, char *argv[]) {
             }
         }
         //print output
-        for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
+        for ( int z = 0; z < size; z++) {
+            cout << myVector[z];
+            if ( z != (size - 1)) cout << ' ';
+        }
         cout << endl;
 
         //clear vector
-       // myVector.clear();
-    
+        myVector.clear();
+}
 
 }
