@@ -22,8 +22,6 @@ int main(int argc, char *argv[]) {
     //Vector to be rotated
     vector<int> myVector;
 
-
-
         //cout << "Size of Vector - Shift # - Direction (L/R)" << endl;;
         cin >> size >> shift >> dir;
 
@@ -36,9 +34,6 @@ int main(int argc, char *argv[]) {
 
     //Left Rotate
     if ( dir == 'L' || dir == 'l') {
-            //Print original order
-            //for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
-            //cout << endl;
 
         for (int k = 0; k < shift; k++) {
                 //Rotate vector once
@@ -53,9 +48,6 @@ int main(int argc, char *argv[]) {
 
         //Right Rotate
     if ( dir == 'R' || dir == 'r') {
-            //Print original order
-            //for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
-            //cout << endl;
 
         for (int k = 0; k < shift; k++) {
                 //Rotate vector once
@@ -63,8 +55,6 @@ int main(int argc, char *argv[]) {
 
                     swap( myVector[j], myVector[j-1] );
 
-                    //for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
-                    //cout << endl;
                 }
             }
         }
@@ -76,7 +66,7 @@ int main(int argc, char *argv[]) {
         cout << endl;
 
         //clear vector
-        myVector.clear();
+       // myVector.clear();
     
 
 }
