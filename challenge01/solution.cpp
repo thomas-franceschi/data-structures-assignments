@@ -59,10 +59,7 @@ int main(int argc, char *argv[]) {
             }
         }
         //print output
-        for ( int z = 0; z < size; z++) {
-            cout << myVector[z];
-            if ( z != (size - 1)) cout << ' ';
-        }
+        for (auto i = myVector.begin(); i != myVector.end(); ++i) cout << *i << ' ';
         cout << endl;
 
         //clear vector
