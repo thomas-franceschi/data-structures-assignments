@@ -1,9 +1,5 @@
 // Challenge 02: Adding List-Based Integers
 
-// Main Execution
-
-// linked_list_template.cpp: Singly Linked List (template)
-
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
@@ -32,9 +28,7 @@ class List {
 
         size_t size() const;
         T& at(const size_t i);
-        void insert(iterator it, const T &data);
         void push_back(const T &data);
-        void erase(iterator it);
         void clear();
 };
 
@@ -44,7 +38,6 @@ template <typename T>
 size_t List<T>::size() const {
     size_t size = 0;
 
-    // Condition can also just be node
     for (Node *node = head; node != nullptr; node = node->next) {
         size++;
     }
@@ -69,25 +62,6 @@ T& List<T>::at(const size_t i) {
     }
 }
 
-// Post-Condition: New Node is created with specified data value and placed
-// after the iterator it.
-template <typename T>
-void List<T>::insert(iterator it, const T& data) {
-    // Handle empty list
-    if (head == nullptr && it == nullptr) {
-        head = new Node{data, nullptr};
-        return;
-    }
-
-    if (it == nullptr) {
-        throw std::out_of_range("invalid iterator");
-    }
-
-    it->next = new Node{data, it->next};
-}
-
-// Post-Condition: New Node is create with specified data value and placed at
-// the end of the list.
 template <typename T>
 void List<T>::push_back(const T& data) {
     // Handle empty list
@@ -105,31 +79,6 @@ void List<T>::push_back(const T& data) {
     }
 
     tail->next = new Node{data, nullptr};
-}
-
-template <typename T>
-void List<T>::erase(iterator it) {
-    if (it == nullptr) {
-        throw std::out_of_range("invalid iterator");
-    }
-
-    if (head == it) {
-        head = head->next;
-        delete it;
-    } else {
-        Node *node = head;
-
-        while (node != nullptr && node->next != it) {
-            node = node->next;
-        }
-
-        if (node == nullptr) {
-            throw std::out_of_range("invalid iterator");
-        }
-
-        node->next = it->next;
-        delete it;
-    }
 }
 
 template <typename T>
