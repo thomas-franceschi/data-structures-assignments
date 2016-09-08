@@ -35,6 +35,7 @@ class List {
         void insert(iterator it, const T &data);
         void push_back(const T &data);
         void erase(iterator it);
+        void clear();
 };
 
 // List implementation --------------------------------------------------------
@@ -131,6 +132,16 @@ void List<T>::erase(iterator it) {
     }
 }
 
+template <typename T>
+void List<T>::clear(){
+    Node* temp;
+    while( head ){
+        temp = head->next;
+        delete head;
+        head = temp;
+    }
+}
+
 // Main execution -------------------------------------------------------------
 
 int main(int argc, char *argv[]) {
@@ -143,7 +154,7 @@ int main(int argc, char *argv[]) {
     int biggest;
 
     string integer1, integer2;
-for( int test = 0; test < 12; test++){
+for( int test = 0; test < 11; test++){
     cin >> integer1 >> integer2;
 
     //cout << integer1 << endl << integer2 << endl;
@@ -203,17 +214,10 @@ for( int test = 0; test < 12; test++){
         cout << flippedSum.at(m);
     }
     cout << endl;
-    list1.erase(list1.front());
-    //list1.erase(list1.front()->next);
-
-    list2.erase(list2.front());
-    //list2.erase(list2.front()->next);
-
-    sum.erase(sum.front());
-    //sum.erase(sum.front()->next);
-
-    flippedSum.erase(flippedSum.front());
-    //flippedSum.erase(flippedSum.front()->next);
+    list1.clear();
+    list2.clear();
+    sum.clear();
+    flippedSum.clear();
 }
     return 0;
 }
