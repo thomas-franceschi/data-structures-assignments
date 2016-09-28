@@ -17,12 +17,16 @@ int main(int argc, char *argv[]) {
         int count = 1;
         
         cin >> num;
-        int tree[num];
+        int newNum = (num * 2) + 2;
+        int tree[newNum];
 
         for (int i = 0; i < num; i++)
         {   
             cin >> temp;
             tree[i] = temp;
+        }
+        for ( int fill = num; fill < newNum; fill++ ){
+            tree[fill] = -1;
         }
         if (isBST(tree, num, count)) cout << "Tree " << j + 1 << " is a BST" << endl;
         else cout << "Tree " << j + 1 << " is not a BST" << endl;
