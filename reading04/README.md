@@ -1,4 +1,3 @@
-
 Reading 04
 ==========
  1. During the divide conquer of merge sortthe current list or sub-list is 
