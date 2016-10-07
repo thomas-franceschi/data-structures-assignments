@@ -10,6 +10,7 @@ struct Node {
   Node *right;
 };
 
+
 void insert (Node *&root, int val);
 void clear( Node *root);
 Node * FindLowestCommonAncestor( Node *root, int val1, int val2);
@@ -45,7 +46,7 @@ int main(int argc, char *argv[]) {
         }
         isFirst = false;
         clear( root );
-        root = nullptr;
+        
     }
 }
 
@@ -69,11 +70,11 @@ void insert( Node *&curr, int val){
         }
 }
 
-void clear( Node *curr){
+void clear( Node *curr ){
 
-    if (curr == nullptr) delete curr;
     if(curr->left != nullptr) clear(curr->left);
     if(curr->right != nullptr) clear(curr->right);
+    delete curr;
 
 }
 
