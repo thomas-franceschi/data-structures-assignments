@@ -48,15 +48,15 @@ int main(int argc, char *argv[]) {
             curr->next->next = nullptr;
             curr = curr->next;
             }
-            
-            
         }
 
+        //remove duplicates
         deduplicate( *&head );
 
         //Print nodes
         curr = head;
         while(curr != nullptr){
+            if ( curr != head ) cout << " ";
             cout << curr->data;
             curr = curr->next;
         }
@@ -79,7 +79,6 @@ void deduplicate( Node *&head ) {
 
     Node *curr = head;
     Node *prev = head;
-    Node *next = nullptr;
     unordered_set<int> elements;
 
      //insert into unordered set
@@ -89,8 +88,8 @@ void deduplicate( Node *&head ) {
         }
 
         //compare set to list
+        curr = head;
         while(curr){
-            next = curr->next;
 
             //If element is in set remove from set
             if (elements.find(curr->data) != elements.end()) {
