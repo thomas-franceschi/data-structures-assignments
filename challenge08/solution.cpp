@@ -15,22 +15,26 @@ bool is_palindrome( string s){
     for ( size_t i = 0; i < s.length(); i++){
         map[s[i]]++;
     }
-    //Print map
+    //count number of occurences of each character
     for( const auto& n : map ) {
         if ((n.second % 2) == 1) numOdd++;
     }
+    //if only 1 char appears once or less then true
     if (numOdd <= 1) return true;
     else return false;
 }
 
 string sanitize( string s){
     string newString;
+    //If char is letter, add to new string
     for ( size_t i = 0; i < s.length(); i++){
         char c = tolower(s[i]);
         if (isalpha(s[i])) newString = newString + c;
     }
+    //Return new string
     return newString;
 }
+
 // Main Execution
 
 int main(int argc, char *argv[]) {
@@ -46,5 +50,3 @@ int main(int argc, char *argv[]) {
     }
     return EXIT_SUCCESS;
 }
-
-// vim: set sts=4 sw=4 ts=8 expandtab ft=cpp:
