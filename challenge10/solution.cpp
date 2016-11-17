@@ -8,12 +8,10 @@
 
 using namespace std;
 
-
-
 struct edge {
     int cost;
+    int name;
     int prev;
-    int vert;
 };
 
 //overload priority queue
@@ -21,17 +19,15 @@ bool operator<(edge x, edge y){
     return x.cost > y.cost;
 }
 
-int getTotalWeight( vector< vector<int> > mst){
+int getTotalWeight( vector< vector<int> > graph, multimap< int, int > mst){
     int sum = 0;
-    for( size_t i = 0; i < mst.size(); i++){
-        for( size_t j = 0; j < mst[i].size(); j++){
-            if(mst[i][j] != -1 ) sum += mst[i][j];
-        }
+    for( auto it = mst.begin(); it != mst.end(); it++ ){
+        sum += graph[it->first][it->second];
     }
     return sum;
 }
 
-map<int, int> primsAlg( vector< vector<int> > graph){
+multimap<int, int> primsAlg( vector< vector<int> > graph){
     map <int, int> marked;
     priority_queue<edge> frontier;
     edge v;
@@ -41,24 +37,38 @@ map<int, int> primsAlg( vector< vector<int> > graph){
         v = frontier.top();
         frontier.pop();
         
-        if (marked.find(v.prev) != marked.end()) continue;
+        if (marked.find(v.name) != marked.end()) continue;
         
-        marked[v.vert] = v.prev;
+        marked[v.name] = v.prev;
 
-        for(int i = 0; i < graph[v.prev].size(); i++){
-            if( graph[v.prev][i] != -1) frontier.push({ graph[v.prev][i], v.prev, i });
+        for(int i = 0; i < graph[v.name].size(); i++){
+            if( graph[v.name][i] != -1) frontier.push({ graph[v.name][i], i, v.name });
         }
      }
      
-     return marked;
+     
+     multimap< int, int > mst;
+     //make mst
+     
+     for(auto it = marked.begin(); it != marked.end(); it++){
+         if( it->first > it->second) mst.insert(pair<int,int>(it->second, it->first));
+         else mst.insert( pair<int,int>(it->first, it->second));
+     }
+     auto it = mst.begin();
+     mst.erase(it);
+
+     return mst;
 }
 
 // Main Execution
 
 int main(int argc, char *argv[]) {
+     bool first = true;
      int num = 0;
      int temp;
     while( cin >> num ){
+        if(!first) cout << endl;
+        first = false;
         vector< vector<int> > graph;
         vector<edge> edges;
         graph.resize(num);
@@ -68,9 +78,7 @@ int main(int argc, char *argv[]) {
             for( int j = 0; j < num; j++){
                 cin >> temp;
                 graph[i][j] = temp;
-                //cout << graph[i][j] << " " ;
             }
-            //cout << endl;
         }
         //make edges list
         for( int i = 0; i < num; i++){
@@ -80,20 +88,17 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-        /*
-        for(int i = 0; i < edges.size(); i++){
-            cout << "(" << edges[i].cost << ", " << edges[i].vert << ", " << edges[i].prev << ")" << endl;
-        }
-        cout << endl;
-        */
+
         //generate mst
-        map<int, int> mst = primsAlg(graph);
+        multimap<int, int> mst = primsAlg(graph);
+        //get sum
+        int sum = 0;
+        sum = getTotalWeight( graph, mst);
+
+        cout << sum << endl;
         for( auto it = mst.begin(); it != mst.end(); it++){
-            cout << it->first << " " << it->second << endl;
+            cout << char(it->first + 'A') << char(it->second+'A') << endl;
         }
-        //find sum of mst
-        //cout << "Sum: " << getTotalWeight(mst) << endl; 
-        //
     }
     
     return EXIT_SUCCESS;
